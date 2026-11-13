@@ -1,0 +1,24 @@
+:root { font-family: system-ui, sans-serif; color: #20232a; background: #f5f6f8; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+header { background: #b31b1b; color: white; padding: 1.5rem 0; }
+h1, h2, h3, p { margin-top: 0; }
+header h1 { margin-bottom: .3rem; }
+header p { margin-bottom: 0; }
+.wrap { width: min(1100px, 92%); margin: auto; }
+.layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; padding: 2rem 0; align-items: start; }
+aside, .product { background: white; border: 1px solid #ddd; border-radius: .5rem; padding: 1rem; }
+label { display: block; font-weight: 600; margin: .8rem 0 .3rem; }
+input { width: 100%; padding: .65rem; border: 1px solid #999; border-radius: .3rem; font: inherit; }
+button { background: #a4161a; border: 0; border-radius: .3rem; color: white; cursor: pointer; font: inherit; padding: .6rem .9rem; }
+button:hover { background: #7d1114; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.product p { min-height: 2.5rem; }
+.cart-item { border-bottom: 1px solid #ddd; padding: .7rem 0; }
+.cart-item input { width: 5rem; margin-right: .5rem; }
+.total { font-weight: 700; margin-top: 1rem; }
+#pay { width: 100%; margin-top: 1rem; }
+.note { font-size: .85rem; color: #555; margin-top: .8rem; }
+#message { overflow-wrap: anywhere; }
+@media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
