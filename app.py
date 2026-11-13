@@ -95,7 +95,10 @@ def create_order(data):
     cart = data.get("items")
     if not isinstance(name, str) or not 1 <= len(name.strip()) <= 100:
         raise ValueError("Please enter your name.")
-    if not isinstance(email, str) or len(email) > 254 or not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
+    if not isinstance(email, str) or len(email) > 254 or any(char.isspace() for char in email):
+        raise ValueError("Please enter a valid email address.")
+    parts = email.split("@")
+    if len(parts) != 2 or not parts[0] or "." not in parts[1] or parts[1].startswith(".") or parts[1].endswith("."):
         raise ValueError("Please enter a valid email address.")
     if not isinstance(cart, list) or not 1 <= len(cart) <= 100:
         raise ValueError("Your cart is empty or invalid.")

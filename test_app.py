@@ -58,6 +58,14 @@ class MarketplaceTests(unittest.TestCase):
                     app.create_order({"name": "Test", "email": "test@example.com", "items": items})
                 paypal.assert_not_called()
 
+    def test_invalid_emails_are_rejected_before_paypal(self):
+        for email in ("", "user@example", "@example.com", "user@.com", "user@domain.",
+                      "user@@example.com", "user name@example.com", "a" * 255):
+            with self.subTest(email=email), patch.object(app, "paypal_request") as paypal:
+                with self.assertRaises(ValueError):
+                    app.create_order({"name": "Test", "email": email, "items": [{"id": 1, "quantity": 1}]})
+                paypal.assert_not_called()
+
     def test_capture_checks_access_and_verified_amount_and_is_idempotent(self):
         order = self.create()
         with patch.object(app, "paypal_request", return_value=self.completed("0.01")):
