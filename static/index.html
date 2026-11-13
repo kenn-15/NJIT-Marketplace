@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NJIT Marketplace</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="wrap"><h1>NJIT Marketplace</h1><p>Campus essentials, all in one place.</p></div>
+  </header>
+  <main class="wrap layout">
+    <section aria-labelledby="products-heading">
+      <h2 id="products-heading">Shop products</h2>
+      <label for="search">Search products</label>
+      <input id="search" type="search" placeholder="Search by name or description">
+      <div id="products" class="products" aria-live="polite"></div>
+    </section>
+    <aside aria-labelledby="cart-heading">
+      <h2 id="cart-heading">Your cart</h2>
+      <div id="cart" aria-live="polite"></div>
+      <p class="total">Total: <span id="total">$0.00</span></p>
+      <form id="checkout">
+        <label for="name">Name</label>
+        <input id="name" name="name" maxlength="100" autocomplete="name" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" maxlength="254" autocomplete="email" required>
+        <button id="pay" type="submit" disabled>Checkout with PayPal</button>
+      </form>
+      <p class="note">Pay securely with PayPal or an eligible credit or debit card.</p>
+      <p id="message" role="status" aria-live="polite"></p>
+    </aside>
+  </main>
+</body>
+</html>
